@@ -2,7 +2,7 @@ const githubUsername = 'your-username'
 
 const siteMetadata = {
   title: 'My weblog',
-  author: 'Joey Jo-Jo Junior Shabbadoo',
+  author: 'Brett E Stockmeier',
   headerTitle: "The poster's corral",
   description: 'Website description goes here',
   language: 'en-us',
