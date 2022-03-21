@@ -19,4 +19,12 @@
   <url>
     <loc>https://your-username.github.io/tags</loc>
   </url>
+
+  <url>
+    <loc>https://your-username.github.io/blog/hollow-world</loc>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/tags/garbage</loc>
+  </url>
 </urlset>
