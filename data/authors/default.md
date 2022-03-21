@@ -1,12 +1,12 @@
 ---
-name: replace-me
+name: Brett E Stockmeier
 avatar: /static/images/avatar.png
-occupation: blogger
-# company: Stanford University
-email: youremail@x.com
-# twitter: https://twitter.com/
-linkedin: https://www.linkedin.com/in/replace-me
-github: https://github.com/replace-me
+occupation: programmer
+company: Allstate
+email: stockmeierb@gmail.com
+twitter: https://twitter.com/Deraphim
+linkedin: https://www.linkedin.com/in/brettstock/
+github: https://github.com/stockmeierb
 ---
 
 Author bio goes here.
