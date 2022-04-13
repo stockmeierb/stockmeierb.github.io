@@ -21,6 +21,10 @@
   </url>
 
   <url>
+    <loc>https://your-username.github.io/blog/alias</loc>
+  </url>
+
+  <url>
     <loc>https://your-username.github.io/blog/first-real-post-lets-talk-about-comics</loc>
   </url>
 
@@ -29,7 +33,19 @@
   </url>
 
   <url>
+    <loc>https://your-username.github.io/blog/shopping-list</loc>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/blog/test-post</loc>
+  </url>
+
+  <url>
     <loc>https://your-username.github.io/tags/about-me</loc>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/tags/coding</loc>
   </url>
 
   <url>
