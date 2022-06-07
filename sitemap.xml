@@ -25,6 +25,10 @@
   </url>
 
   <url>
+    <loc>https://your-username.github.io/blog/back-from-the-dead</loc>
+  </url>
+
+  <url>
     <loc>https://your-username.github.io/blog/first-real-post-lets-talk-about-comics</loc>
   </url>
 
@@ -54,5 +58,9 @@
 
   <url>
     <loc>https://your-username.github.io/tags/garbage</loc>
+  </url>
+
+  <url>
+    <loc>https://your-username.github.io/tags/update</loc>
   </url>
 </urlset>
