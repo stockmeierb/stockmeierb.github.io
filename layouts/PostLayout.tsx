@@ -44,6 +44,9 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
       />
       <ScrollTopAndComment />
       <article>
+        {/* <div className="bg-blue-600 text-sm text-yellow-300 sm:bg-green-800 md:bg-red-500 lg:bg-purple-600 xl:bg-slate-700">
+          Debug (TODO)
+        </div> */}
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
             <div className="space-y-1 text-center">
