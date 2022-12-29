@@ -11,7 +11,7 @@ Because the base was tweaked to make a static website, certain server-only featu
 The base of this blog, adapted from `timlrx/tailwind-nextjs-starter-blog#typescript`, is available on the `static-base` branch. You can make a fresh copy of it:
 
 ```bash
-npx degit erikdstock/erikdstock.github.io#static-base
+npx degit stockmeierb/stockmeierb.github.io#static-base
 ```
 
 From there follow the [original README](./docs/README.md), ignoring references to features like `next/image`:
@@ -100,6 +100,6 @@ This template is provided as-is, though I'll happily accept issues or PRs to fix
 
 ## License
 
-[MIT](https://github.com/erikdstock/erikdstock.github.io/blob/master/LICENSE) © [Erik Stockmeier](https://erikdstock.github.io)
+[MIT](https://github.com/stockmeierb/stockmeierb.github.io/blob/master/LICENSE) © [Brett Stockmeier](https://stockmeierb.github.io)
 
 [forked-starter]: https://github.com/timlrx/tailwind-nextjs-starter-blog

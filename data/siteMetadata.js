@@ -1,22 +1,22 @@
 const siteMetadata = {
-  title: 'Erik Online',
-  author: 'Erik Stockmeier',
-  headerTitle: 'Erik Online',
-  description: 'A blog dedicated to Erik',
+  title: 'BrettNet',
+  author: 'Brett Stockmeier',
+  headerTitle: 'Brett Online',
+  description: 'A blog dedicated to Brett',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://erik-online.com',
-  siteRepo: 'https://github.com/erikdstock/erikdstock.github.io',
+  siteRepo: 'https://github.com/stockmeierb/stockmeierb.github.io',
   siteLogo: '/static/images/logo.svg',
   image: '/static/images/avatar.jpeg',
   socialBanner: '/static/images/site-banner.png',
   email: 'webmaster@erik-online.com',
-  github: 'https://github.com/erikdstock',
-  mastodon: 'https://mastodon.social/@microchungus',
-  // twitter: 'https://twitter.com/iamerikonline',
+  github: 'https://github.com/stockmeierb',
+  // mastodon: 'https://mastodon.social/@your-name-here',
+  // twitter: 'https://twitter.com/your-name-here',
   // facebook: 'https://facebook.com',
-  youtube: 'https://www.youtube.com/erikdstock',
-  linkedin: 'https://www.linkedin.com/in/erikdstock',
+  // youtube: 'https://www.youtube.com/your-name-here',
+  linkedin: 'https://www.linkedin.com/in/your-name-here', // TODO
   locale: 'en-US',
   analytics: {
     // supports plausible, simpleAnalytics, umami or googleAnalytics
