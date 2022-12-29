@@ -1,22 +1,22 @@
 
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-      <title>Island 3 Paradise</title>
-      <link>https://your-username.github.io/blog</link>
-      <description>Under construction and possibly forgotten; talking about whatever</description>
+      <title>BrettNet</title>
+      <link>https://erik-online.com/blog</link>
+      <description>A blog dedicated to Brett</description>
       <language>en-us</language>
-      <managingEditor>address@yoursite.com (Brett E Stockmeier)</managingEditor>
-      <webMaster>address@yoursite.com (Brett E Stockmeier)</webMaster>
+      <managingEditor>webmaster@erik-online.com (Brett Stockmeier)</managingEditor>
+      <webMaster>webmaster@erik-online.com (Brett Stockmeier)</webMaster>
       <lastBuildDate>Wed, 30 Mar 2022 00:00:00 GMT</lastBuildDate>
-      <atom:link href="https://your-username.github.io/tags/coding/feed.xml" rel="self" type="application/rss+xml"/>
+      <atom:link href="https://erik-online.com/tags/coding/feed.xml" rel="self" type="application/rss+xml"/>
       
   <item>
-    <guid>https://your-username.github.io/blog/shopping-list</guid>
+    <guid>https://erik-online.com/blog/shopping-list</guid>
     <title>Shopping List</title>
-    <link>https://your-username.github.io/blog/shopping-list</link>
+    <link>https://erik-online.com/blog/shopping-list</link>
     <description>What&#39;s on my list</description>
     <pubDate>Wed, 30 Mar 2022 00:00:00 GMT</pubDate>
-    <author>address@yoursite.com (Brett E Stockmeier)</author>
+    <author>webmaster@erik-online.com (Brett Stockmeier)</author>
     <category>coding</category>
   </item>
 
