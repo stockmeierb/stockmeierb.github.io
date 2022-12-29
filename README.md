@@ -21,7 +21,7 @@ From there follow the [original README](./docs/README.md), ignoring references t
 3.  Modify `projectsData.js`
 4.  Modify `headerNavLinks.js` to customize navigation links
 5.  Add blog posts
-6.  Test that the site can build: `yarn build && yarn export && yarn serve:static`
+6.  Test that the site can build: `npm run build && npm run export && npm run serve:static`
 7.  Enjoy the many easter eggs (unmarked TODOs) I have left for you to enjoy! These likely include
     - Updating default styles
     - Updating dependencies
@@ -31,7 +31,7 @@ From there follow the [original README](./docs/README.md), ignoring references t
 ## Installation
 
 ```bash
-yarn install
+npm run install
 ```
 
 ## Development
@@ -39,7 +39,7 @@ yarn install
 First, run the development server:
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -86,7 +86,7 @@ layout: PostLayout
 
 ### Compose
 
-Run `yarn compose` to bootstrap a new post.
+Run `npm run compose` to bootstrap a new post.
 
 Follow the interactive prompt to generate a post with pre-filled front matter. `PostLayout` is the default layout, while `PostSimple` is... simpler.
 
