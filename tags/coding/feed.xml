@@ -7,9 +7,19 @@
       <language>en-us</language>
       <managingEditor>webmaster@erik-online.com (Brett Stockmeier)</managingEditor>
       <webMaster>webmaster@erik-online.com (Brett Stockmeier)</webMaster>
-      <lastBuildDate>Wed, 30 Mar 2022 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Thu, 20 Mar 2025 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://erik-online.com/tags/coding/feed.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://erik-online.com/blog/shopping-list-2025</guid>
+    <title>Shopping List 2025</title>
+    <link>https://erik-online.com/blog/shopping-list-2025</link>
+    <description>What&#39;s on my list in 2025</description>
+    <pubDate>Thu, 20 Mar 2025 00:00:00 GMT</pubDate>
+    <author>webmaster@erik-online.com (Brett Stockmeier)</author>
+    <category>coding</category>
+  </item>
+
   <item>
     <guid>https://erik-online.com/blog/shopping-list</guid>
     <title>Shopping List</title>
