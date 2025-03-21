@@ -7,9 +7,19 @@
       <language>en-us</language>
       <managingEditor>webmaster@erik-online.com (Brett Stockmeier)</managingEditor>
       <webMaster>webmaster@erik-online.com (Brett Stockmeier)</webMaster>
-      <lastBuildDate>Thu, 20 Mar 2025 00:00:00 GMT</lastBuildDate>
+      <lastBuildDate>Fri, 21 Mar 2025 00:00:00 GMT</lastBuildDate>
       <atom:link href="https://erik-online.com/feed.xml" rel="self" type="application/rss+xml"/>
       
+  <item>
+    <guid>https://erik-online.com/blog/First Steps (once again)</guid>
+    <title>First Steps (once again)</title>
+    <link>https://erik-online.com/blog/First Steps (once again)</link>
+    <description>What I did today</description>
+    <pubDate>Fri, 21 Mar 2025 00:00:00 GMT</pubDate>
+    <author>webmaster@erik-online.com (Brett Stockmeier)</author>
+    <category>coding</category><category>dev-diary</category>
+  </item>
+
   <item>
     <guid>https://erik-online.com/blog/shopping-list-2025</guid>
     <title>Shopping List 2025</title>
