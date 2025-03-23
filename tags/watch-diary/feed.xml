@@ -1,0 +1,24 @@
+
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+      <title>BrettNet</title>
+      <link>https://erik-online.com/blog</link>
+      <description>A blog dedicated to Brett</description>
+      <language>en-us</language>
+      <managingEditor>webmaster@erik-online.com (Brett Stockmeier)</managingEditor>
+      <webMaster>webmaster@erik-online.com (Brett Stockmeier)</webMaster>
+      <lastBuildDate>Sat, 22 Mar 2025 00:00:00 GMT</lastBuildDate>
+      <atom:link href="https://erik-online.com/tags/watch-diary/feed.xml" rel="self" type="application/rss+xml"/>
+      
+  <item>
+    <guid>https://erik-online.com/blog/watched-elemental</guid>
+    <title>So I watched Elemental...</title>
+    <link>https://erik-online.com/blog/watched-elemental</link>
+    <description>Posting anything to get a commit in</description>
+    <pubDate>Sat, 22 Mar 2025 00:00:00 GMT</pubDate>
+    <author>webmaster@erik-online.com (Brett Stockmeier)</author>
+    <category>movies</category><category>watch-diary</category>
+  </item>
+
+    </channel>
+  </rss>
