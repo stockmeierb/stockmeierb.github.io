@@ -7,7 +7,7 @@ const siteMetadata = {
   theme: 'system', // system, dark or light
   siteUrl: 'https://erik-online.com',
   siteRepo: 'https://github.com/stockmeierb/stockmeierb.github.io',
-  siteLogo: '/static/images/logo.svg',
+  siteLogo: '/static/images/bs-logo.png',
   image: '/static/images/avatar.jpeg',
   socialBanner: '/static/images/site-banner.png',
   email: 'webmaster@erik-online.com',

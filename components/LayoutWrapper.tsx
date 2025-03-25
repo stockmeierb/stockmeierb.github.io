@@ -21,7 +21,7 @@ const LayoutWrapper = ({ children }: Props) => {
               <div className="flex items-center justify-between">
                 <img
                   alt="Site logo"
-                  src="static/images/logo.svg"
+                  src="static/images/bs-logo.png"
                   className="max-w-12 mr-3 max-h-12"
                 />
                 {typeof siteMetadata.headerTitle === 'string' ? (
