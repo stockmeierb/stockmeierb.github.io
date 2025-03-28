@@ -46,8 +46,8 @@ export default function AuthorLayout({ children, frontMatter }: Props) {
           <div className="container mx-auto">
             <img
               className=" mx-auto max-w-sm"
-              src="/static/images/eol.png"
-              alt="Early logo concept"
+              src="/static/images/leap.jpeg"
+              alt="Placeholder Leap!"
             />
           </div>
         </div>
