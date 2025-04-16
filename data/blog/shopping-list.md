@@ -1,6 +1,6 @@
 ---
 title: Shopping List
-date: '2022-03-30'
+date: '2025-03-30'
 tags: ['coding']
 draft: false
 summary: What's on my list
