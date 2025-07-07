@@ -2,12 +2,12 @@
 const siteMetadata = {
   title: 'Thirsty Libraries',
   author: 'Brett Stockmeier',
-  headerTitle: 'Brett Stockmeier Blog',
+  headerTitle: 'Brettmerica Online',
   description: 'A personal blog for Brett Stockmeier, to chonicle personal development and entertainment blogging',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  // siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  // siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://stockmeierb.github.io',
+  siteRepo: 'https://github.com/stockmeierb/stockmeierb.github.io',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
   // mastodon: 'https://mastodon.social/@mastodonuser',
