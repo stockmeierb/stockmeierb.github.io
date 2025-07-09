@@ -7,9 +7,10 @@ const siteMetadata = {
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://stockmeierb.github.io',
-  siteRepo: 'https://github.com/stockmeierb/stockmeierb.github.io',
-  siteLogo: `${process.env.BASE_PATH || ''}/static/images/logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  siteRepo: 'https://github.com/stockmeierb/stockmeierb.github.io', // required probably
+  siteLogo: `${process.env.BASE_PATH || ''}/static/images/bs-logo.png`, // 500x405; public/static/images/logo.png
+  // socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`, //1200x600
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/linkedIn-banner.png`, //1200x600
   // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'stockmeierb@gmail.com',
   github: 'https://github.com/stockmeierb',
