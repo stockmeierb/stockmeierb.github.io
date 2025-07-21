@@ -1,4 +1,8 @@
 {
+  "anime": 2,
+  "programming": 1,
+  "project": 1,
+  "books": 1,
   "comics": 2,
   "wonder-woman": 1,
   "next-js": 6,
@@ -13,7 +17,6 @@
   "ecmascript": 1,
   "homebrew": 1,
   "macos": 2,
-  "anime": 1,
   "watch-party": 1,
   "pandemic": 1,
   "isolation": 1,
