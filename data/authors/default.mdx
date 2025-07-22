@@ -6,7 +6,6 @@ email: bestockmeier@gmail.com
 linkedin: https://www.linkedin.com/in/brettstock/
 github: https://github.com/stockmeierb
 bluesky: https://bsky.app/profile/brettstock.bsky.social
-images: ['/static/images/bio/leap.jpeg']
 ---
 
 Brett Stockmeier is a computer science professional. His values include activism, community, family and teamwork. His hobbies include running Dungeons & Dragons, anime, comics, boxing, pinball and video games. Someday he would like to learn an instrument (piano). (His avatar is his D&D character)
@@ -24,4 +23,8 @@ The markdown doesn't want to display the images that would be displayed by this 
 <Image alt="linkedin banner" src="/static/images/bio/linkedIn-banner.png" width={1584} height={396} />
 ```
 
-Consider adding an 'images' section to the post frontmatter(?) and include the image to be displayed. Maybe that'll fix it?
+Adding `images` section to post frontmatter hasn't resolved issue either. There are two "document types", Blog and Authors, and Authors doesn't have images in the frontmatter.
+
+```
+images: ['/static/images/bio/leap.jpeg']
+```
