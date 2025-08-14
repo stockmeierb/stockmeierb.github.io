@@ -1,0 +1,51 @@
+---
+title: 'Learning Next.js - CSS Styling Chapter 2'
+date: '2025-08-14'
+tags: ['programming', 'next.js', 'coding', 'tutorial']
+draft: true
+summary: Summary of App Router next.js course Chapter 2 and reactions
+images: []
+authors: ['brett-stockmeier']
+---
+
+# Introduction
+I'm going to continue to refine and tinker with my process as I go through the next.js course. I fully intend to create a post for every chapter (maybe more than one post!) as I believe that blogging about something helps me organize my thoughts and work through my uncertainty with new topics.
+
+And hopefully, it has more practical benefits[^1] as well.
+
+#### Goals of this chapter
+1. How to add a global CSS file to your application
+1. Two different ways of styling: Tailwind[^3] and CSS modules
+1. How to conditionally add class names with the clsx utility package
+
+[^1]: Like finding work in programming[^2]
+[^2]: Can you do footnotes in footnotes?
+[^3]: Hey! That's what this blog is built on!
+
+## Global Styles
+I haven't worked much[^4] with CSS in over a year. I'm familair with what CSS are, and I know what they look like, but my experience using them at this point is basically back to zero. To use it properly, I'd have to relearn the *contents* of the tech.
+
+Like I know I can set the width of an element, but I don't necesarrly have confidence I know how (or the correct **keyword**) to do it[^5]. 
+
+So I'm taking the tutorial's word that **it's best to put all style sheet classes in a single global style sheet** currently. And likewise, it's also good practice to import that global style sheet into the top-level component of the project. (I'm told the reasoning behind this will be covered further in a future chapter).
+
+Also during this section, I noticed an odd symbol in the included import statement for the style sheet:
+
+```import '@/app/ui/global.css';```
+
+After consulting with my brother, this appears to be like a macro (or I guess in Typescript terms, a "path") that has granted that symbol special meaning. Here is the definition in the project's `tsconfig.json` file:
+
+```
+  "compilerOptions": {
+    ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+  ```
+
+While I was confused at first (the path seemed to substitute 2 characters for 2 characters), this actually makes *practical* sense if you assume that the path always refers to the context of the tsconfig.json file rather than the context of the file the path is being referenced from. In this sense, `@` is a shortcut to always reference back to the root of the project folder structure! Very handy!
+
+[^4]: Or at all; even when I was working at Allstate, my front end work comprised a slim majority of my development time, and that had more to do with arranging components on a UI than styling that UI to begin with
+[^5]: See also: regex, terminal options
