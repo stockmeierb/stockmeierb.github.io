@@ -1,5 +1,5 @@
 ---
-title: 'Learning Next.js - CSS Styling Chapter 2'
+title: 'Learning Next.js - "Optimizing Fonts and Images" Chapter 2'
 date: '2025-08-14'
 tags: ['programming', 'next.js', 'coding', 'tutorial', 'typescript']
 draft: true
@@ -9,114 +9,57 @@ authors: ['brett-stockmeier']
 ---
 
 # Introduction
-I'm going to continue to refine and tinker with my process as I go through the next.js course. I fully intend to create a post for every chapter (maybe more than one post!) as I believe that blogging about something helps me organize my thoughts and work through my uncertainty with new topics.
-
-And hopefully, it has more practical benefits[^1] as well.
+This was a weird, hard to parse chapter for me. I guess I've never thought about post optimization before. And the added Tailwind only made it harder to get a handle of.
 
 #### Goals of this chapter
-1. How to add a global CSS file to your application
-1. Two different ways of styling: Tailwind[^3] and CSS modules
-1. How to conditionally add class names with the clsx utility package
+1. How to add custom fonts with next/font.
+1. How to add images with next/image.
+1. How fonts and images are optimized in Next.js.
 
-[^1]: Like finding work in programming[^2]
-[^2]: Can you do footnotes in footnotes?
-[^3]: Hey! That's what this blog is built on!
+## Why Optimize Fonts
+My experience up to this point has been largely focused on back end development. Perhaps that's why I couldn't really appreciate how good coding practices can affect performance on the front end. Apparently fetching and loading custom fonts (and images?) can be quite taxing. Or so this chapter claims. It feels like I'm still taking this on faith, but I have no real reason to doubt either.
 
-## Global Styles
-I haven't worked much[^4] with CSS in over a year. I'm familair with what CSS are, and I know what they look like, but my experience using them at this point is basically back to zero. To use it properly, I'd have to relearn the *contents* of the tech.
+Cumulative Layout Shift[^1] is a new term that relates to Google's metrics and how they evaluate website performance (which in turn apparently factors into the order that their search results are returned). It results to fonts in that for many unoptimized browsers, websites are initially loading page content in a default font to display information ASAP, and only later loading the specified font and swapping out the content. But not all fonts are equal in appearance: they can vary in size and width. Simply swapping one font for another can push other elements out of position and change the entire layout and feel of a web page.
 
-Like I know I can set the width of an element, but I don't necesarrly have confidence I know how (or the correct **keyword**) to do it[^5]. 
+Next.js automatically handles font opitimization through its `next/font` module, which purports to download fonts at build time and hosts them with other static assets. This way they are ready to be displayed on page load without the need to resort to default fonts and element shifting when you switch fonts.
 
-So I'm taking the tutorial's word that **it's best to put all style sheet classes in a single global style sheet** currently. And likewise, it's also good practice to import that global style sheet into the top-level component of the project. (I'm told the reasoning behind this will be covered further in a future chapter).
+I'm assuming this comes at the cost of your project being that much larger after build as your static assets are now also holding the font files. I'm curious as to whether these are considered to be comparatively large or small in size?
 
-Also during this section, I noticed an odd symbol in the included import statement for the style sheet:
+[^1]: The tutorial links this [article](https://vercel.com/blog/how-core-web-vitals-affect-seo) in relation to this topic, detailing how performance metrics and affect SEO (Search Engine Optimization). I should blog about this in the future.
 
-```import '@/app/ui/global.css';```
+## Adding a Primary Font
+The example steps for adding/applying a primary font (using next/font) according to the tutorial:
+1. In the ui folder of the project (where everything pertaining to the front end is stored), create a new typescript file, `fonts.ts` to track the fonts used throughout the application. This doesn't track where these fonts are being used, but if they are not imported here, they cannot be used elsewhere.
+1. From within `fonts.ts`, import the font you want (in the case of the example, "Inter"), and export it. When exporting it, it is important to specify a subset of the font that you want included. I'm curious as to why this is built to be specified on the export step, and not the import. I understand the idea comes from the idea that the average user will not *need* access to the entire character set of the font, but are you not still importing and storing the entire font regardless?
+1. Apply the font to the desired elements through the `className` property (as we've seen with Tailwind before)
 
-After consulting with my brother, this appears to be like a macro (or I guess in Typescript terms, a "path") that has granted that symbol special meaning. Here is the definition in the project's `tsconfig.json` file:
+In `fonts.ts`:
 
-```
-  "compilerOptions": {
-    ...
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    }
-  }
-  ```
-
-While I was confused at first (the path seemed to substitute 2 characters for 2 other characters), this actually makes *practical* sense if you assume that the path always refers back to the context of the tsconfig.json file rather than the context of the file the path is being referenced from. In this sense, `@` is a shortcut to always reference back to the root of the project folder structure! Very handy!
-
-[^4]: Or at all; even when I was working at Allstate, my front end work comprised a slim majority of my development time, and that had more to do with arranging components on a UI than styling that UI to begin with
-[^5]: See also: regex, terminal command options
-
-## Tailwind
-The chapter goes over two methods for styling your code. One of them is Tailwind.
-
-As I have come to understand it, Tailwind takes the .css class that would ordinarily be defined in `global.css` and applied to multiple components, and instead requires that developers define these classes in the code itself via the component's `className` property. 
-
-A comparison below:
-
-```
-<h1 className="text-blue-500">I'm blue!</h1>
--vs-
-<h1 className="my-blue-text-class">I'm blue!</h1>
-```
-
-I have mixed thoughts.
-
-The tutorial makes the argument that with each class being singularly applied to each element, that means when you add or delete or modify your code and the elements in your project, you remvoe the headache of maintaining separate stylesheets, style collisions, and the size of your CSS bundle growing as your application grows in size. My experience being so small, perhaps I am just unable to appreciate how much removing these concerns really means to an experienced developer.
-
-Instead, I see the work that goes into having to meticulously and individually style every single element used in the application. I see the work that happens when you want to change the styling across the project, ensuring you hunt down every single applicable element to make sure the sweeping change is applied to everything.
-
-But on the plus side, to some extent you can look at a single code file and maybe with experience get the complete picture of what the output of that code will look like. You can open up the project locally, you can change one class name and see exactly the change you expect with confidence that there will be no unintended side-effects.
-
-I had more thoughts to share on this topic, but they're escaping me right now. Suffice to say, I'm not entirely sold on the technology, but there's a good chance I could be convinced. I'm believe this way of styling could be great, but I also think it's better suited to more lightweight and agile projects, at least at first, at least for me as I become accustomed to it.
-
-Although to be clear, the tutorial makes it clear that all tailwind styling has already been completed in the code for this tutorial project.
-
-## CSS Modules
-While the tutorial itself admittedly seems to favor Tailwind, CSS Modules exist as well, being posited as "a agreat alternative" if you prefer writing traditional CS rules or want to keep your styles separate fro your JSX.
-
-Personally, I appreciate clean code and cramming all the style rules into the class name of a component doesn't seem very elegant to me. But I can also appreciate the simplicity of it.
-
-CSS modules instead create new .css files which contain pre-defined style classes that can be reused. These CSS files need to be imported before they can be used, and...
-
-I'm sorry, I don't remember a LOT about CSS, but this just sounds like the way I learned how to use CSS from the very beginning (I don't remember if they were always called modules or not). I'm unclear if this is being posited like it's some new innovation in programming or what.
-
-My initial thoughts are these: I am concerned I do not know the optimum way to write and organize CSS files. At least in that respect, Tailwind has CSS Modules beaten, because everything is defined in the ClassName without having to take that extra step and reference a pre-defined class by an alias.
-
-So yeah, all things being equal, and this being a blog built on Tailwind, I'll be using that method going forward until I have enough experience to know my own preferences.
-
-## Using the `clsx` library to toggle class names
-Here's a neat trick! Conditional styling! Like Tailwind, you can put it right in the className!
-
-Example from the tutorial:
-
-```
-import clsx from 'clsx';
+```import { Inter } from 'next/font/google';
  
-export default function InvoiceStatus({ status }: { status: string }) {
+export const inter = Inter({ subsets: ['latin'] });```
+
+In `layout.tsx`: 
+```import '@/app/ui/global.css';
+import { inter } from '@/app/ui/fonts';
+ 
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <span
-      className={clsx(
-        'inline-flex items-center rounded-full px-2 py-1 text-sm',
-        {
-          'bg-gray-100 text-gray-500': status === 'pending',
-          'bg-green-500 text-white': status === 'paid',
-        },
-      )}
-    >
-  )}
-```
+    <html lang="en">
+      <body className={`${inter.className} antialiased`}>{children}</body>
+    </html>
+  );
+}```
 
-I really do think it's a neat trick, and would be incredibly useful, perhaps specifically for me and Thirsty Libraries. But it's also code that gives me a headache looking at it. Perhaps I just need practice and experience (and exposure). It's just weird seeing an html element's opening tag be as long as some functions. In general, I'd rather write code that's a bit more... *human readable*. But maybe that's my hangup to get over.
+In the tutorial (as shown above), we are applying the font to the `<body>` tag in `layout.tsx` to see the font be applied to the entirety of the application.
 
-## Other Styling Solutions
-This section exists. It doesn't go into detail about other styling solutions, but merely alerts you that they are options. I'm not inclined to study up on all of them when I'd rather focus on becoming confident with just one of them for the time being.
+(They also recommend using `antialiased` which "smoothes out" the font. It "adds a nice touch". I'm curious if there's ever a reason NOT to use antialiased?)
 
-The options presented though:
-- Sass
-- CSS-in-JS libraries like "styled-jsx", "styled-components", and "emotion"
+## Practice: Adding a Secondary Font
+A practice exercise! Takeaways for me: beyond adding a "global" font through the layout.tsx `<body>` element can be overridden by applying a different font "further down the stream" (I know there's probably a more elequent way to put this, but I can't recall it from my education).
 
-This is definitely a deep topic, but it just doesn't make sense for me to do a deep dive when I don't even have a pool at home yet. Or something. It's not a great analogy.
+## Why Optimize Images?
