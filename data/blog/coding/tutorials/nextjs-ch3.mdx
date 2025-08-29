@@ -1,8 +1,8 @@
 ---
-title: 'Learning Next.js - "Optimizing Fonts and Images" Chapter 2'
-date: '2025-08-14'
+title: 'Learning Next.js - "Optimizing Fonts and Images" Chapter 3'
+date: '2025-08-29'
 tags: ['programming', 'next.js', 'coding', 'tutorial', 'typescript']
-draft: true
+draft: false
 summary: Summary of App Router next.js course Chapter 3 and reactions
 images: []
 authors: ['brett-stockmeier']
@@ -63,3 +63,80 @@ In the tutorial (as shown above), we are applying the font to the `<body>` tag i
 A practice exercise! Takeaways for me: beyond adding a "global" font through the layout.tsx `<body>` element can be overridden by applying a different font "further down the stream" (I know there's probably a more elequent way to put this, but I can't recall it from my education).
 
 ## Why Optimize Images?
+Essentially, this section exists to introduce some of the frequent and specific problems associated with unoptimized images. You can include images in your application using the `<html>` tag, but this means that in order to ensure a wide range of support across a variety of devices, there is a lot of manual work you need to do to ensure compatibility and proper performance.
+
+Rather than try to rephrase the specific issues given as examples, I'll [mostly] just copy and paste them here. Image optimization can: 
+- Ensure your image is responsive on different screen sizes.
+- Specify image sizes for different devices.
+= Prevent layout shift as the images load.
+- Lazy load images that are outside the user's viewport.
+
+Image specialization is apparently a large and complex enough issue that can warrant specialization on its own. But for the purposes of learning next.js, the tutorial will have me relying on the `next/image` component and pre-written code.
+
+I admit for my own purposes, I'm more concerned with back end functionality, but given the nature of my personal project, proper and attractive presentation will be a necessity. Hopefully `next/imsage` will do the job when the time comes.
+
+Speaking of...
+
+## The `<Image>` Component
+There are 6 points to this section.
+- It's actually an extention of vanilla `<img>`
+- It comes with automatic image optimization (hopefully I'll never have to stress test this)
+- Prevents layout shift while images load automatically
+- "Resizing images to avoid shipping large images to devices with a smaller viewport." (I'm not sure I understand this sentecne? If I had to guess, I think it means that the `<Image>` component will automatically scale images down to match smaller screens?)
+- Lazy loads[^2] images by default
+- "Serving images in modern formats, like WebP and AVIF, when the browser supports it." (I don't actually know these formats! Perhaps something to look into)
+
+[^2]: Lazy Loading is a methodology where images are loaded at the last possible moment: only loading them just before they enter the "screen". If I recall correctly, this can make the initial page load faster, but erratic scrolling/behavior can slow down performance as the application tries to keep up with the user's behavior
+
+## Adding the Desktop/Mobile Hero Images
+These sections have me trying out the `<Image>` component for myself by adding code to the tutorial project. There are two images, one to be displayed on desktop devices, and another to be displayed on mobile devices.
+
+```
+
+      <Image
+        src="/hero-desktop.png"
+        width={1000}
+        height={760}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+      />
+```
+
+Takeaways:
+- Tailwind styling can be applied to the `<Image>` component via the `className` property as well
+- It's apparently good practice to supply the width and height properties of the Image component. This isn't to lock the image to a certain size apparently, but more to inform the application of the aspect ratio of the image should be maintained (I may need a refresher on the best ways to ascertain an image's dimensions; I remember struggling with that in the past and I haven't had to do it for a long time)
+- I had to do some deeper investigation into this part: for the `className` in the above example:
+  - hidden - hidden from view (or rather, flat out removed from the DOM[^3])
+  - md - medium sized screens
+  - block - block layout (not "blocked from view")
+
+This effectively means that the image will by default be hidden from view unless the screen viewing the application is conisidered "medium" in size. This does not seem intuitive to me. Do we even all agree on what consitutues a "medium" sized screen?[^4]
+
+Adding the code for the mobile "hero image" (what is a hero image, anyway? is that an official industry term? I've never heard it before...), and we get the following code for **both** images:
+
+```
+      <Image
+        src="/hero-desktop.png"
+        width={1000}
+        height={760}
+        className="hidden md:block"
+        alt="Screenshots of the dashboard project showing desktop version"
+      />
+      <Image
+        src="/hero-mobile.png"
+        width={560}
+        height={620}
+        className="block md:hidden"
+        alt="Screenshot of the dashboard project showing mobile version"
+      />
+```
+
+It is interesting to me here that for the mobile image, we are going the exact opposite of the desktop image: it is rendered by default, but hidden only on medium (which I guess at this point can be thought of as shorthand for "desktop" and maybe laptop) screens.
+
+I realize this is only a tutorial, but... this can't be good practice, can it? If you're going to conditionally render images, wouldn't you want the default to be hidden, and manually specify when to block it?
+
+I'll have to see if I can confirm this elsewhere I guess...
+
+
+[^3]: Document Object Model. It is like a map of the structure of an HTML page. An object removed from the DOM is for all intents and purposes not on the web page
+[^4]: The Tailwind documentation has documentation on ["Responsive Design"](https://tailwindcss.com/docs/responsive-design#overview). Other options incldue: sm, lg, xl, and 2xl. Interestingly, these sizes seem to be soley defined by the width of the screen
