@@ -35,12 +35,15 @@ The example steps for adding/applying a primary font (using next/font) according
 
 In `fonts.ts`:
 
-```import { Inter } from 'next/font/google';
+```
+import { Inter } from 'next/font/google';
  
-export const inter = Inter({ subsets: ['latin'] });```
+export const inter = Inter({ subsets: ['latin'] });
+```
 
 In `layout.tsx`: 
-```import '@/app/ui/global.css';
+```
+import '@/app/ui/global.css';
 import { inter } from '@/app/ui/fonts';
  
 export default function RootLayout({
@@ -53,7 +56,8 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
-}```
+}
+```
 
 In the tutorial (as shown above), we are applying the font to the `<body>` tag in `layout.tsx` to see the font be applied to the entirety of the application.
 
