@@ -4,143 +4,37 @@ date: '2025-09-5'
 tags: ['programming', 'next.js', 'coding', 'tutorial', 'typescript']
 draft: true
 summary: Summary of App Router next.js course Chapter 4 and reactions
-images: []
+images: [/static/images/coding/nextjs-ch4-routing.png]
 authors: ['brett-stockmeier']
 ---
 
 # Introduction
-This was a weird, hard to parse [chapter](https://nextjs.org/learn/dashboard-app/optimizing-fonts-images) for me. I guess I've never thought about post optimization before. And the added Tailwind only made it harder to get a handle of.
+This chapter was genuinely exciting and engaging. I learned a lot about how next.js components interact with each other and can "cascade" down the file system with nested layouts. Hopefully I can demonstrate what I learned below. It's obvious though this chapter had a lot of vital information that is going to be directly relevant to working on the most basic of projects in the future.
 
 #### Goals of this chapter
-1. How to add custom fonts with next/font.
-1. How to add images with next/image.
-1. How fonts and images are optimized in Next.js.
-
-## Why Optimize Fonts
-My experience up to this point has been largely focused on back end development. Perhaps that's why I couldn't really appreciate how good coding practices can affect performance on the front end. Apparently fetching and loading custom fonts (and images?) can be quite taxing. Or so this chapter claims. It feels like I'm still taking this on faith, but I have no real reason to doubt either.
-
-Cumulative Layout Shift[^1] is a new term that relates to Google's metrics and how they evaluate website performance (which in turn apparently factors into the order that their search results are returned). It results to fonts in that for many unoptimized browsers, websites are initially loading page content in a default font to display information ASAP, and only later loading the specified font and swapping out the content. But not all fonts are equal in appearance: they can vary in size and width. Simply swapping one font for another can push other elements out of position and change the entire layout and feel of a web page.
-
-Next.js automatically handles font opitimization through its `next/font` module, which purports to download fonts at build time and hosts them with other static assets. This way they are ready to be displayed on page load without the need to resort to default fonts and element shifting when you switch fonts.
-
-I'm assuming this comes at the cost of your project being that much larger after build as your static assets are now also holding the font files. I'm curious as to whether these are considered to be comparatively large or small in size?
-
-[^1]: The tutorial links this [article](https://vercel.com/blog/how-core-web-vitals-affect-seo) in relation to this topic, detailing how performance metrics and affect SEO (Search Engine Optimization). I should blog about this in the future.
-
-## Adding a Primary Font
-The example steps for adding/applying a primary font (using next/font) according to the tutorial:
-1. In the ui folder of the project (where everything pertaining to the front end is stored), create a new typescript file, `fonts.ts` to track the fonts used throughout the application. This doesn't track where these fonts are being used, but if they are not imported here, they cannot be used elsewhere.
-1. From within `fonts.ts`, import the font you want (in the case of the example, "Inter"), and export it. When exporting it, it is important to specify a subset of the font that you want included. I'm curious as to why this is built to be specified on the export step, and not the import. I understand the idea comes from the idea that the average user will not *need* access to the entire character set of the font, but are you not still importing and storing the entire font regardless?
-1. Apply the font to the desired elements through the `className` property (as we've seen with Tailwind before)
-
-In `fonts.ts`:
-
-```
-import { Inter } from 'next/font/google';
+1. Create the dashboard routes using file-system routing.
+1. Understand the role of folders and files when creating new route segments.
+1. Create a nested layout that can be shared between multiple dashboard pages.
+1. Understand what colocation, partial rendering, and the root layout are.
  
-export const inter = Inter({ subsets: ['latin'] });
-```
 
-In `layout.tsx`: 
-```
-import '@/app/ui/global.css';
-import { inter } from '@/app/ui/fonts';
- 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
-  );
-}
-```
+## Nested routing
+I have vague memories of in the past working with languages and technologies where routing needed to be made explicit with code written into the project. In this section Next.js introduces its own built in method for handling routing, and I am in love with the elegance of its simplicity.
 
-In the tutorial (as shown above), we are applying the font to the `<body>` tag in `layout.tsx` to see the font be applied to the entirety of the application.
+Simply put, in Next.js, the file system informs the routing.
 
-(They also recommend using `antialiased` which "smoothes out" the font. It "adds a nice touch". I'm curious if there's ever a reason NOT to use antialiased?)
+![Routing Chart](/static/images/coding/nextjs-ch4-routing.png)
 
-## Practice: Adding a Secondary Font
-A practice exercise! Takeaways for me: beyond adding a "global" font through the layout.tsx `<body>` element can be overridden by applying a different font "further down the stream" (I know there's probably a more elequent way to put this, but I can't recall it from my education).
+Every folder within a folder corresponds to a new segment of the url a user must navigate to in order to access that content. Is it possible to override or work around this default behavior? Perhaps. Maybe there will be more instruction on how to do just that later on. But for now, I am in awe of the relationship between the project structure and the application behavior. And how the one influences the other. It compels coders to think ahead when making naming and project structure decisions. It encourages *planning* and smart design.
 
-## Why Optimize Images?
-Essentially, this section exists to introduce some of the frequent and specific problems associated with unoptimized images. You can include images in your application using the `<html>` tag, but this means that in order to ensure a wide range of support across a variety of devices, there is a lot of manual work you need to do to ensure compatibility and proper performance.
+And similarly, it may also encourage minimal/efficient design? When happhazardly adding files to the file structure can very directly affect the user experience in such a major way, I think I personally would have to second guess some of my decisions.
 
-Rather than try to rephrase the specific issues given as examples, I'll [mostly] just copy and paste them here. Image optimization can: 
-- Ensure your image is responsive on different screen sizes.
-- Specify image sizes for different devices.
-= Prevent layout shift as the images load.
-- Lazy load images that are outside the user's viewport.
+This also made me wonder almost immediately that Next.js is not immediately suitable for all types of projects. This blog for example is being built with Next.js and Tailwind. And I've been customizing it as I saw fit to help keep content sorted, including adding sub folders. This post for example lies in the `blog/coding/tutorials` folder. A folder for my coding stuff, and a sub folder for my reactions as I continue to go through the Next.js tutorials.
 
-Image specialization is apparently a large and complex enough issue that can warrant specialization on its own. But for the purposes of learning next.js, the tutorial will have me relying on the `next/image` component and pre-written code.
+I didn't realize that my browser was hiding the url from me. Revealing the url of my past posts... I didn't realize how complex they had become. Of course, we are living in the future. Where things like urls and telephone numbers are largely abstracted away. With a minimum of effort, it's something you only need to imput once, and then you let your browser or your cell phone's built in address book remember it for you forever.
 
-I admit for my own purposes, I'm more concerned with back end functionality, but given the nature of my personal project, proper and attractive presentation will be a necessity. Hopefully `next/imsage` will do the job when the time comes.
+Or maybe I'm just the weird one worrying about how long my urls are and nobody else pays such things any mind.
 
-Speaking of...
+Anyway, the chapter continues to say that to actually create the pages on these routes, you need to add a reserved file: `page.tsx`. Without this file, navigating to the route will only yield a 404. But regardless of whether you have `page.tsx` or not, the file structure will still inform the URL.
 
-## The `<Image>` Component
-There are 6 points to this section.
-- It's actually an extention of vanilla `<img>`
-- It comes with automatic image optimization (hopefully I'll never have to stress test this)
-- Prevents layout shift while images load automatically
-- "Resizing images to avoid shipping large images to devices with a smaller viewport." (I'm not sure I understand this sentecne? If I had to guess, I think it means that the `<Image>` component will automatically scale images down to match smaller screens?)
-- Lazy loads[^2] images by default
-- "Serving images in modern formats, like WebP and AVIF, when the browser supports it." (I don't actually know these formats! Perhaps something to look into)
-
-[^2]: Lazy Loading is a methodology where images are loaded at the last possible moment: only loading them just before they enter the "screen". If I recall correctly, this can make the initial page load faster, but erratic scrolling/behavior can slow down performance as the application tries to keep up with the user's behavior
-
-## Adding the Desktop/Mobile Hero Images
-These sections have me trying out the `<Image>` component for myself by adding code to the tutorial project. There are two images, one to be displayed on desktop devices, and another to be displayed on mobile devices.
-
-```
-
-      <Image
-        src="/hero-desktop.png"
-        width={1000}
-        height={760}
-        className="hidden md:block"
-        alt="Screenshots of the dashboard project showing desktop version"
-      />
-```
-
-Takeaways:
-- Tailwind styling can be applied to the `<Image>` component via the `className` property as well
-- It's apparently good practice to supply the width and height properties of the Image component. This isn't to lock the image to a certain size apparently, but more to inform the application of the aspect ratio of the image should be maintained (I may need a refresher on the best ways to ascertain an image's dimensions; I remember struggling with that in the past and I haven't had to do it for a long time)
-- I had to do some deeper investigation into this part: for the `className` in the above example:
-  - hidden - hidden from view (or rather, flat out removed from the DOM[^3])
-  - md - medium sized screens
-  - block - block layout (not "blocked from view")
-
-This effectively means that the image will by default be hidden from view unless the screen viewing the application is conisidered "medium" in size. This does not seem intuitive to me. Do we even all agree on what consitutues a "medium" sized screen?[^4]
-
-Adding the code for the mobile "hero image" (what is a hero image, anyway? is that an official industry term? I've never heard it before...), and we get the following code for **both** images:
-
-```
-      <Image
-        src="/hero-desktop.png"
-        width={1000}
-        height={760}
-        className="hidden md:block"
-        alt="Screenshots of the dashboard project showing desktop version"
-      />
-      <Image
-        src="/hero-mobile.png"
-        width={560}
-        height={620}
-        className="block md:hidden"
-        alt="Screenshot of the dashboard project showing mobile version"
-      />
-```
-
-It is interesting to me here that for the mobile image, we are going the exact opposite of the desktop image: it is rendered by default, but hidden only on medium (which I guess at this point can be thought of as shorthand for "desktop" and maybe laptop) screens.
-
-I realize this is only a tutorial, but... this can't be good practice, can it? If you're going to conditionally render images, wouldn't you want the default to be hidden, and manually specify when to block it?
-
-I'll have to see if I can confirm this elsewhere I guess...
-
-
-[^3]: Document Object Model. It is like a map of the structure of an HTML page. An object removed from the DOM is for all intents and purposes not on the web page
-[^4]: The Tailwind documentation has documentation on ["Responsive Design"](https://tailwindcss.com/docs/responsive-design#overview). Other options incldue: sm, lg, xl, and 2xl. Interestingly, these sizes seem to be soley defined by the width of the screen
+## 
