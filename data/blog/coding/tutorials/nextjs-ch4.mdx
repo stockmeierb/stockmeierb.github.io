@@ -58,3 +58,20 @@ In the tutorial example, this means that within the Dashboard page, we need to b
 
 2. But also interested from a performance standpoint is the behavior of "partial rendering" that we see happening by default. Basically as you navigate, only the contents from `page.tsx` files will need to reload/re-render as you go. (This also means that state of layout components will be preserved... the ramifications I understand, but probably don't appreciate currently without a concrete and practical example in front of me beyond the navigation example of the tutorial code)
 
+## Root Layout
+
+One more quick callback to stress the importance of the "Root Layout" in the base `app` directory where we keep all the content and code for the project.
+
+This root layout is **required** for every Next.js application. Nested layouts means that any code in this section will be shared across all pages in the project, so it's important to think about what you want the user to see here. (it makes me wonder if it's at all possible to strip away this or any other layout further "downstream" or if that's simply not possible; I don't have a pressing need to do this right now though; I'm just curious)
+
+You can also use the root layout to add/modify the metadata of the application, which I'm told will be covered in a later chapter. I assume this will relate to SEO [^2]
+
+[^2]: **S**earch **E**ngine **O**ptimization
+
+## Takeaways
+
+I loved this chapter. It wasn't boring. I feel like I learned a lot. I love the nested routing and nested nature and nested everything about Next.js. I feel like for the first time I'm learning stuff that will actually help me do what I want to do with the technology.
+
+Some of the code also made it clear I have more learning to do than I originally planned though. Gonna need to revisit React sooner or later, and Typescript will be a whole separate series I'm sure.
+
+And also... these posts aren't coming out nearly as fast as I had hoped.
