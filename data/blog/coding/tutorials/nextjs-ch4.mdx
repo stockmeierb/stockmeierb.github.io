@@ -40,9 +40,21 @@ Anyway, the chapter continues to say that to actually create the pages on these 
 ## Creating the Dashboard Page
 So putting what we learned in the previous section into practice, adding a new dashboard page to the app (with a URL `/dashboard`) is a simple matter of creating a new subfolder under the app folder in the project directory. This creates the new route segment of the URL, but there will be no content to serve at that address until a `page.tsx` is created in the dashboard folder.
 
-And again, having a special name for the file that actually returns the content for that route (`page.tsx`), you can also store additional supplementary files that can store components and offload code that you don't want in the public file itself. You could even put these helper files in their own subfolder, and nobody would know the difference provided you don't create a `page.tsx` file to serve content from that address.
+And again, having a special name for the file that actually returns the content for that route (`page.tsx`), you can also store additional supplementary files that can store components and offload code that you don't want in the public file itself. You could even put these helper files in their own subfolder, and nobody would know the difference provided you don't create a `page.tsx` file to serve content from that address. (this is called "colocation"[^1] btw)
 
 So... embarassingly enough, while the idea that the folder structure affected URL routing directly initially gave me mixed feelings, in truth, it's very adaptable and impresses me.
 
 The next section (which I'm ommitting talking about) is a simple exercise to add even more new pages building off the dashboard section: customers and invoices. To solve it, you only need to create the proper folders in the dashboard directory and add `page.tsx` files. I feel this will be an important pattern to reinforce and again, hugely beneficial in my future projects.
+
+[^1]: More on colocation [here](https://nextjs.org/docs/app/getting-started/project-structure#colocation).
+
+## Creating the Dashboard Layouts
+Having covered content, it's time to worry about the front-end and appearance of the new Dashboard page. But just as we have nested routing in Next.js, we also have nested layouts. And a layout created in the dashboard directory will similarly ripple down to all the sub folders within the dashboard directory (and all the subfolders of those subfolders, and on and on and on).
+
+In the tutorial example, this means that within the Dashboard page, we need to build a navigation component into `layout.tsx` within the dashboard folder which will have links to access the newly created customers and invoices pages. By putting this new layout into the dashboard directory, we can ensure that this layout will also display for customers and invoices. But it won't ripple upwards to the home page. More simplicity, and more elegance. Next.js is a nesting doll of components and routing that necessitates forethought and planning (or maybe making sweeping changes to the structure of your project will actually be super easy; perhaps that will be covered in a future chapter)
+
+2 more important points from this section:
+1. In this section, from the code given to us to add to the sample project for the new dashboard layout file, we can see that the new layout contains two sections of note: a SideNave component (a prebuilt navigation bar existing on the left side of the application), and a passed property `children` of type `React.ReactNode`. I'm told this is Typescript Tomfoolery, but basically (as I understand it) it is automatically passing content from any `page.tsx` or `layout.tsx` file nested deeper in the file structure. (nested Layouts, nested routing, nested everything; I love it)
+
+2. But also interested from a performance standpoint is the behavior of "partial rendering" that we see happening by default. Basically as you navigate, only the contents from `page.tsx` files will need to reload/re-render as you go. (This also means that state of layout components will be preserved... the ramifications I understand, but probably don't appreciate currently without a concrete and practical example in front of me beyond the navigation example of the tutorial code)
 

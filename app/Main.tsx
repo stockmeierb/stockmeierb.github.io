@@ -6,6 +6,19 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 
 const MAX_DISPLAY = 5
 
+// Erik Typescript example - 9/10/25
+// interface MyRatingProps {
+//   name: string
+//   rating: number
+//   division: "A" | "B"
+//   children: { something: false }
+// }
+
+// const MyRating: React.FC<MyRatingProps> = (props) => {
+//   const {division, rating, name, children} = props
+//   return `${name} ${rating} ${division}`
+// }
+
 export default function Home({ posts }) {
   return (
     <>
