@@ -37,4 +37,12 @@ Or maybe I'm just the weird one worrying about how long my urls are and nobody e
 
 Anyway, the chapter continues to say that to actually create the pages on these routes, you need to add a reserved file: `page.tsx`. Without this file, navigating to the route will only yield a 404. But regardless of whether you have `page.tsx` or not, the file structure will still inform the URL.
 
-## 
+## Creating the Dashboard Page
+So putting what we learned in the previous section into practice, adding a new dashboard page to the app (with a URL `/dashboard`) is a simple matter of creating a new subfolder under the app folder in the project directory. This creates the new route segment of the URL, but there will be no content to serve at that address until a `page.tsx` is created in the dashboard folder.
+
+And again, having a special name for the file that actually returns the content for that route (`page.tsx`), you can also store additional supplementary files that can store components and offload code that you don't want in the public file itself. You could even put these helper files in their own subfolder, and nobody would know the difference provided you don't create a `page.tsx` file to serve content from that address.
+
+So... embarassingly enough, while the idea that the folder structure affected URL routing directly initially gave me mixed feelings, in truth, it's very adaptable and impresses me.
+
+The next section (which I'm ommitting talking about) is a simple exercise to add even more new pages building off the dashboard section: customers and invoices. To solve it, you only need to create the proper folders in the dashboard directory and add `page.tsx` files. I feel this will be an important pattern to reinforce and again, hugely beneficial in my future projects.
+
