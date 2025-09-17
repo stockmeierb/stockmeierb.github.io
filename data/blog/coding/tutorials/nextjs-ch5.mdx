@@ -2,9 +2,59 @@
 title: 'Learning Next.js - "Navigating Between Pages" Chapter 5'
 date: '2025-09-17'
 tags: ['programming', 'next.js', 'coding', tutorial']
-draft: true
+draft: false
 summary: Summary of App Router next.js course Chapter 5 and reactions
 images: []
 authors: ['brett-stockmeier']
 ---
 
+# Introduction
+Going by the official Next.js tutorial, this is a surprisingly short and simple chapter. It details exactly one component for linking between pages (`next/link`), and one design pattern. We also get some details about how the Link componenet offers advantages over the vanilla html `<a>` tag.
+
+## So the thing about navigation through html...
+
+There's a full page refresh every time you navigate. the `<Link>` component allows for client-side navigation, where content is updated and refreshed dynamically on the client's side, without any need to make additional requests to the server.
+
+And Link is even built with a similar format to the anchor tag so that you can substitute and reuse existing code easliy.
+
+## Prefetching and Route Splitting
+(You can tell this is authetic blogging because I'm not about to copy and paste directly from the website and pretend like I understand it 100%)
+
+So in contrast to html, next.js "code splits" your application according to route segments. There isn't a great example of this or enough time spent annalyzing this in the chapter to make it clear exactly what is going on here. The chapter references SPAs[^1], but it seems like SPAs wouldn't necesarrily have route segments to begin with?
+
+The compmarison they draw is that in an SPA, the browser would ordinarily retrieve all the code in one bulky html file and display it all at once. This would presumably be enormously taxing on user resources.
+
+On the other hand, route splitting (presumably based on the URL, and echoing back again to the project structure) only loads the code for the code for the route segment you're on, rather than all of the code for the entire project.
+
+The drawback (presumably) is that by not loading all the code for the entire application, you are isolating your code. If an error gets thrown, code outside of the route will be unaware. Perhaps you can throw the error manually? It seems like it won't be a problem until it suddenly becomes a problem. 
+
+I'd like to say I'll investigate further, but that likely won't be the case. My priority right now is getting the skills that I can begin working in earnest on my own projects. Still, there are some links to documentation that go a little bit (not much) more into detail about some of these concepts.
+
+I'll link them at the bottom of the post.
+
+Oh, and the benefit of code splitting is that there is less code to manage before serving the page to the user. Smaller payloads, faster delivery. It's natural, yeah?
+
+Next.js also engages in prefetching. When a `<Link>` component enters a "broswer's viewport" (is onscreen), it will prefetch the code for the linked rout in the background. That means when/if the user clicks the link, the page will already be full or partially loaded for faster turnaround times.
+
+My question(s):
+
+- When the Link component leaves the viewport, is that prefetched code then dumped? Or is it retained for the possibility that the user will decide to scroll back to it and click the link? Does that mean that performance could be affected by a page with too many Links? Or that scrolling up and down a page could result in performance issues?
+
+- After finishing the chapter, I have to wonder: do I fully understand the difference between the paths and routes in next.js? I might have to google this soon to make sure I don't proceed under a very *bad* misconception...
+
+## UI Pattern: Showing Active Links
+This seems less about introducing an essential pattern (although it is a nice QoL feature) and more an excuse to reveal Next.js provides a natural hook to get the current path from the URL to be used in code.
+
+`usePathname()` seems like it has way more promise and versitility and convenience than simply checking if the href of a Link matches the current path and restyling the Link component if there is a match (all thanks to the clsx library[^2] which was introduced back in chapter 2 about styling; I admit, I needed a reminder).
+
+# In Conclusion
+It's a short chapter. It gave me what seems like a single, reliable tool to use which may very well work for me 99% of the time, and a bunch of good reasons to use it. I guess for now, it's not necesarry to think too hard about it.
+
+#### Oh, and those links I promised
+- Probably most recommended: [Linking and Navigating](https://nextjs.org/docs/app/getting-started/linking-and-navigatings)
+- [Stuff on SPAs](https://nextjs.org/docs/app/guides/single-page-applications)
+- [More on `usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname)
+- [More on `<Link>`](https://nextjs.org/docs/pages/api-reference/components/link)
+
+[^1]: **S**ingle-**P**age **A**pplications
+[^2]: clsx [documentation](https://github.com/lukeed/clsx)
