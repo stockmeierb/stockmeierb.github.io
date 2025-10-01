@@ -1,0 +1,45 @@
+---
+title: 'Learning Next.js - "Setting Up Your Database" Chapter 6'
+date: '2025-09-17'
+tags: ['programming', 'next.js', 'coding', tutorial', 'databases']
+draft: true
+summary: Summary of App Router next.js course Chapter 6 and reactions
+images: []
+authors: ['brett-stockmeier']
+---
+
+# Introduction
+This chapter is about setting up the database for the app. If you don't have knowledge of of PostgresSQL, the tutorial recommends setting one up one through "Vercel's marketplace integrations". While I believe I've used PostgresSQL before... to put it plainly, I could use a refresher. And I certainly haven't used Vercel[^1] before.
+
+Unfortunately, this chapter does not make for a good introduction.
+
+[^1]: But it's clear from the tutorial that they are a database provider
+
+## In this chapter (with little explanation)
+
+1. Push your project to Github (*long since done*)
+1. Set up a Vercel account and link your github to it
+1. Create and link your project to a postgres database
+1. Seed the database with initial data
+
+The github stuff is fine, and creating a Vercel account is as simple as following directions and making sure you never enter your credit card information b/c this is a tutorial. When it comes time to put a database to work on a serious project open to the public, I'll have to have a better idea of what I'm doing I'm sure. Even connecting your github project and deploying on Vercel is easy enough with the tutorial.
+
+The issue comes after that, when it comes to making decisions about your database that might possibly affect it's scope in the long term. Of course, I'm guessing that making the wrong choice at the beginning can be corrected later on. I assume the commitment isn't until death.
+
+It's worth making special note that when you connect your github to Vercel, every time you push changes to the main branch, Vercel will automatically redeploy the project "no configuration needed".
+
+Also of note, when you open Pull Requests (something that I haven't had opportunity to test myself on a solo dev tutorial project), you get an "instant preview URL" which "allow you to catch deployment errors early and share a preview of your project with team members for feedback"
+
+
+
+# In Conclusion
+It's a short chapter. It gave me what seems like a single, reliable tool to use which may very well work for me 99% of the time, and a bunch of good reasons to use it. I guess for now, it's not necesarry to think too hard about it.
+
+#### Oh, and those links I promised
+- Probably most recommended: [Linking and Navigating](https://nextjs.org/docs/app/getting-started/linking-and-navigatings)
+- [Stuff on SPAs](https://nextjs.org/docs/app/guides/single-page-applications)
+- [More on `usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname)
+- [More on `<Link>`](https://nextjs.org/docs/pages/api-reference/components/link)
+
+[^1]: **S**ingle-**P**age **A**pplications
+[^2]: clsx [documentation](https://github.com/lukeed/clsx)
