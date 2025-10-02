@@ -4,7 +4,7 @@ date: '2025-09-17'
 tags: ['programming', 'next.js', 'coding', tutorial', 'databases']
 draft: true
 summary: Summary of App Router next.js course Chapter 6 and reactions
-images: []
+images: ['/static/images/coding/create-database.png']
 authors: ['brett-stockmeier']
 ---
 
@@ -12,8 +12,6 @@ authors: ['brett-stockmeier']
 This chapter is about setting up the database for the app. If you don't have knowledge of of PostgresSQL, the tutorial recommends setting one up one through "Vercel's marketplace integrations". While I believe I've used PostgresSQL before... to put it plainly, I could use a refresher. And I certainly haven't used Vercel[^1] before.
 
 Unfortunately, this chapter does not make for a good introduction.
-
-[^1]: But it's clear from the tutorial that they are a database provider
 
 ## In this chapter (with little explanation)
 
@@ -30,16 +28,25 @@ It's worth making special note that when you connect your github to Vercel, ever
 
 Also of note, when you open Pull Requests (something that I haven't had opportunity to test myself on a solo dev tutorial project), you get an "instant preview URL" which "allow you to catch deployment errors early and share a preview of your project with team members for feedback"
 
+## And after that...
 
+There's instructions, but no... *guidance*. 
+
+> *Next, to set up a database, click Continue to Dashboard and select the Storage tab from your project dashboard. Select Create Database. Depending on when your Vercel account was created, you may see options like Neon or Supabase. Choose your preferred provider and click Continue.*
+
+Ok, but if i'm new to Vercel, what do I know of the differences between *Neon* and *Supabase*? When you don't have a preferred provider and aren't informed enough to know the nuance. (iirc, the screenshots were also wrong and out of date)
+
+It's a chapter that could use an update. 
+
+Eventually, I looked forward in the instructions, saw that *Neon* was being used in a later screenshot.
+
+![Use NEON!](/static/images/coding/create-database.png)
+
+So I used Neon.
 
 # In Conclusion
-It's a short chapter. It gave me what seems like a single, reliable tool to use which may very well work for me 99% of the time, and a bunch of good reasons to use it. I guess for now, it's not necesarry to think too hard about it.
+It's a weird dumb chapter. It's not easy to follow it to the letter. Add it to the list of things I need to study up on.
 
-#### Oh, and those links I promised
-- Probably most recommended: [Linking and Navigating](https://nextjs.org/docs/app/getting-started/linking-and-navigatings)
-- [Stuff on SPAs](https://nextjs.org/docs/app/guides/single-page-applications)
-- [More on `usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname)
-- [More on `<Link>`](https://nextjs.org/docs/pages/api-reference/components/link)
+If you're like me and unsure of what or why to pick something, I advise going with *Neon* and not letting yourself get tripped up when things don't always look the way they tell you that they should (tbh, something that trips me up far too often; I like reliable instructions that I can depend on)
 
-[^1]: **S**ingle-**P**age **A**pplications
-[^2]: clsx [documentation](https://github.com/lukeed/clsx)
+[^1]: But it's clear from the tutorial that they are a database provider
