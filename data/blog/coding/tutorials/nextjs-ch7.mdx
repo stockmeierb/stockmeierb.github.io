@@ -1,9 +1,53 @@
 ---
 title: 'Learning Next.js - "tbd" Chapter 7'
-date: '2026-09-17'
+date: '2026-11-20'
 tags: ['programming', 'next.js', 'coding', tutorial']
 draft: true
 summary: Summary of App Router next.js course Chapter 7 and reactions
 images: ['/static/images/coding/create-database.png']
 authors: ['brett-stockmeier']
 ---
+
+# Introduction
+
+I am back. My attention was not so briefly stolen away, but now that's over and I'm back and hoping to pick up where I left off. Starting with finally writing this post. I think I originally went through this material back around the beginning of October, but it was so... *inconsequetial* to learning specifically Next.js that I put off writing up an analysis of my experiences until it fell through the cracks.
+
+So I'm reading through the material again and reacting fresh.
+
+And then I'm gonna move on to something more interesting and fun hopefully. 
+
+This chapter was about fetching the data for the database I just seeded. Which, admittedly, that is pretty fun
+
+## Topics covered
+
+1. Learn about some approaches to fetching data: APIs, ORMs, SQL, etc.
+1. How Server Components can help you access back-end resources more securely.
+1. What network waterfalls are.
+1. How to implement parallel data fetching using a JavaScript Pattern.
+
+My biggest strengths here are definitely with APIs and SQL. ORMs (...Object Relational Models?) may well be a term I've heard before, but I couldn't explain it right now (I haven't actually reread the material yet; I'm writing this in real time). That means it's either something I haven't used in work before, or its so elementary that my brain discards the information (See also: whatever CRUD stands for[^1]).
+
+I have a vague sense of what network waterfalls are as a concept, and parallel data fetching are what I am here for.
+
+## On the topic of APIs
+
+APIs are great in my book. Maybe there's a better way to do what they do that I haven't been introduced to. Technology, norms and best practices can change so quickly and I am still not on the mailing list for the newsletter (and also many companies in my experience are just set in their ways, relying on methods that work and are predictable, even if they're not the very best).
+
+But basically, APIs are a layer of abstraction that hide the inner workings of your application, in this case your database. Rather than expose the sensitive bits of your project, an API is the equivalent of building a special button (or maybe a doorbell?) with a specific purpose. A call is made (the doorbell is pressed), and the result is tightly regulated. Maybe the doorbell expects something before it works. Authentication. Authorization. An offering of data. Or else it rejects the call.
+
+The beauty is, the doorbell presser never really gets a chance to peek beyond the door. If you have a database, you are keeping the precious database *secrets* safe. If you want the client to be able to gain access to the database's contents, all they need to do is ring the doorbell. The API will perform the operation and return the result to the client, who remains outside of the door. 
+
+Have I explained it enough yet? I am really quite *proud* of my doorbell analogy.
+
+In the case of the Next.js tutorial, it makes a point of highlighting two uses of APIs irl:
+
+1. Many third party services use an API
+1. "If you're fetching data from the client, you want to have an API layer that runs on the server to avoid exposing your database secrets to the client." (basically what I just said)
+
+Potential downsides? Idk. Like I said, I've used these a lot in the past, and it's possible the industry may have moved on, declaring something else to be the new "best practice". I suppose there is a consideration of balance to be made: how much functionality does each doorbell manage? I've been on projects that perhaps... *overload* an API with too much responsibility. And perhaps the opposite as well: too many APIs that could be consolidated for cleaner code.
+
+Regardless, they are fun. And (as I understand it), they are not a thing so much as a concept. In Next.js, APIs are implemented via [route handlers](https://nextjs.org/docs/app/api-reference/file-conventions/route).
+
+
+
+[1]: Just kidding. I know it's "Create (Insert), Read (Select), Update (Update), Delete (Delete)"; you only need to be embarassed by that particular piece of trivia in front of a boss once before you commit it to memory
