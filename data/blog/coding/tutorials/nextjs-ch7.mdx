@@ -1,8 +1,8 @@
 ---
-title: 'Learning Next.js - "tbd" Chapter 7'
-date: '2026-11-20'
+title: 'Learning Next.js - "Fetching SQL" Chapter 7'
+date: '2025-12-9'
 tags: ['programming', 'next.js', 'coding', tutorial']
-draft: true
+draft: false
 summary: Summary of App Router next.js course Chapter 7 and reactions
 images: ['/static/images/coding/create-database.png']
 authors: ['brett-stockmeier']
@@ -55,10 +55,27 @@ I know how to write SQL queries. More than the very basics. I'm quite proud of t
 Anyway, according to this section, ORMs are maybe an alternative to writing raw sequel queries? But literally no details are given, including the full acronym. ORM itself links to the "Postgres on Vercel" page in [Vercel's documentation](https://vercel.com/docs/postgres). They don't see fit to explain it (to be fair, they didn't really see fit to explain SQL either), so I'm guessing it's just not all that relevant in the Next.js tutorial project. Probably could be cut?
 
 There are two cases given for when you may need to know SQL (and maybe but probably not ORMs):
-1. When you're implementing the logic behind an API
+1. When you're implementing the logic behind an API (and need to write the necesarry queries)
 1. When you're quering the database directly for whatever reason from the react server components.
 
+## React Server Components that Fetch Data
 
+Next.js applications recommend using React Server Components, at least according to the official documentation. I suspect it's possible that consulting Next.js user communities could have alternate recommendations. But fetching data using these React Server Components is allegedly still considered a relatively new approach, with some benefits:
 
+1. Native support for asynchronous tasks like data fetching via Javascript Promises (something I have some prior experience with). It also mentions `useEffect` and `useState` or other "data fetching libraries" (something I do not have prior experience with)
+1. You can keep all data fetching operations on the server: There's no back and forth with the client outside of sending the result
+1. Another benefit of keeping things server side: you have direct access to query the database. No need to call/write a separate API
+
+### Why to know/use SQL (really quick)
+
+1. Versatile
+1. Industry Standard
+1. Transferrable
+1. the postgres.js library provides protections and SQL Injection attacks[^2]
+
+The rest of the chapter focuses on inserting the tutorial code into the tutorial application. TBH, it's been so long (> 50 days) since I first completed this section that I'm probably going to have to come back and review this. For my own purposes, I will need to create some basic databases to store user information (a bare minimum, I assure you!) and track book reading progress.
+
+But honestly, for the sake of my patience and my passion, I need to put this chapter behind me now. 
 
 [^1]: Just kidding. I know it's "Create (Insert), Read (Select), Update (Update), Delete (Delete)"; you only need to be embarassed by that particular piece of trivia in front of a boss once before you commit it to memory
+[^2]: SQL Injection attacks: when a user uses your input fields against you, entering text that is suppposed to be inserted into a SQL query that will be interpretted as code with malicious consequenses... basically, as I understand it
