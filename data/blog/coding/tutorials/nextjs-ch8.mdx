@@ -1,0 +1,58 @@
+---
+title: 'Learning Next.js - "Rendering" Chapter 8'
+date: '2025-12-17'
+tags: ['programming', 'next.js', 'coding', tutorial']
+draft: false
+summary: Summary of App Router next.js course Chapter 8 and reactions
+images: []
+authors: ['brett-stockmeier']
+---
+
+# Introduction
+
+Ok. This one is pretty simple. All about rendering: static vs dynamic, when to use them and what the drawbacks are. Ordinarily I try to summarize these chapters in my own words to show I know them, but I'm genuinely tempted to just copy and paste some of the tutorial here. (But I won't)
+
+## Topics covered
+...
+
+> All about rendering: static vs dynamic, when to use them and what the drawbacks are
+
+I'll be honest: I knew all of this already. Could I necesarrily recall everything on demand with the perfect technical vocabulary? Maybe not. But I know what static rending is and I know what dynamic rendering is, and all that they imply.
+
+**EXCEPT** for some SEO stuff. That's still not something I'm accustomed to thinking about.
+
+## Static Rendering
+
+Basically Static vs Dynamic comes down to how complete the page youre trying to view is **before** the user makes the request. Are you requesting a book or are you requesting Mad Libs? Anyone can look up and display the contents of a book. Mad Libs is incomplete initially though. You need input of some sort from the user (client).
+
+Static rendering is requesting books. Advantages:
+1. Fast
+1. Content gets built once, cached, and is served to all requesters equally.
+1. SEO! Pre-rendered content is easier for search engines crawl through, and the faster response times further boost your visibility (I guess Search Engines favor faster websites?)
+
+Static rendering is best for static web pages, with no user data (or data period). Maybe the mad libs example isn't complete. It's not just about waiting for the user to give you the data you need to complete the mad libs. Sometimes you need to recall previous mad libs and serve it back. But none of that has to do with static rendering.
+
+This blog is statically rendered. Every article is written ahead of time, saved to the project directory, and the whole thing is built ahead of time, assembled once at build time, cached and served up to everyone who wants to read it.
+
+Fun!
+
+## Dynamic Rendering
+
+Like I said in my Mad Libs analogy (I'm very proud of it, and I came up with it on the spot!), Dynamic rendering needs something from the user before it can serve the data. Maybe not a direct and immediate input, but at some point, something needed to be provided by the user which directly impacts the content they are looking at. This input can come in the form of a user profile, information provided in a web form, or even a cookie the user didn't even know they had.
+
+Benefits of dynamic rendering:
+1. You can get a snapshot of real time data
+1. You can serve content personalized to the user (you wouldn't want to show Brian's profile page to Jacob after all)
+1. You can access information right up until the time the request is made (like cookies, or url parameters)
+
+## A last section on dynamic rendering
+
+The tutorial makes the argument that dynamic rendering is best for a dashboard app like the one we're building. Thirsty Libraries won't need a complex dashboard, but it will need one regardless, and that too will be best served by dynamic rendering.
+
+It's hard to imagine what pages in my little pet project won't be dynamically rendered. A news page perhaps, with announcements and updates made to the app?
+
+But anyways, a key point to bear in mind is that with dynamic rendering, your response time can only be as fast as your slowest request when fetching data. You're not rendering the page in part while you wait for everything to complete. 
+
+To demonstrate this, the tutorial will had me insert an *artificial* 3 second delay in the response time for one of the data requests. It turns out 3 seconds is a long time.
+
+So yeah... think about it.
