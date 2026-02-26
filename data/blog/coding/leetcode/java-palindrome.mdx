@@ -1,0 +1,107 @@
+---
+title: 'Learning Next.js - App Router Introduction'
+date: '2026-2-25'
+tags: ['programming', 'leetcode', 'whiteboarding']
+draft: false
+summary: Analysis of leetcode problem
+images: []
+authors: ['brett-stockmeier']
+---
+
+# Trying Something New
+
+As much as I've enjoyed learning new skills with Next.js, it's clear that I'm not doing enough programming by just burying myself in tutorials. I can answer questions through leetcode and other such websites, but I don't think just that is enough.
+
+So I'm turning it into a post. I'll document my process, my bad assumptions, and everything I can think to put down. Hopefully, it'll help me to talk through my whiteboarding in an interview.
+
+That said:
+
+## 9. Palindrome Number
+
+```
+Given an integer x, return true if x is a palindrome, and false otherwise. 
+
+Example 1:
+
+Input: x = 121
+Output: true
+Explanation: 121 reads as 121 from left to right and from right to left.
+Example 2:
+
+Input: x = -121
+Output: false
+Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+Example 3:
+
+Input: x = 10
+Output: false
+Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+ 
+
+Constraints:
+
+-2^31 <= x <= 2^31 - 1
+```
+
+### My Approach
+
+I believe the best way to check for a palindrome will be through the comparison of two objects. Checking if one half is a mirror image of another is essentially checking if they are "equal". We just need to transform and modify the input first.
+
+As far as how to transform the input in the most efficient way, I can think of two ways to go about it: we could cut the input in half, reverse one half, and make the comparison check. To accomplish this, we could convert the input into a String, and use a substring function. I know that there are built in functions in the String and Integer datatypes to accomplish this. I'm not aware if there is an easy or convenient way to reverse the order of a string. (Perhaps using the substring function, but reversing the boundary inputs?)
+
+Another possibility may be to create from scratch a new comparison object (y), manually set it to the reverse of the input (x) so that `x[0] = y[y.length()-1]`... or some such.
+
+It's obvious from the instructions that while we're dealing with integers here, we aren't really interested in the input as a number. If we just wanted the digits to match up, we wouldn't care if the input was negative after all. (This means that we can perform an initial check for a negative number and immediately return false if the number < 0).
+
+It's clear The form we really want the input in is as a character array. To the best of my recollection, there is no way to convert an Integer directly to a character array, so I believe we'll have to first convert the Integer to a String first. We can use the built in function `Integer.toString(x)`
+
+From there, we'll need to convert the string to the desired character array with the builtin string function `.toCharArray()`. We can even do both conversions in a single line of code, like so:
+
+```
+        char[] s = Integer.toString(x).toCharArray();
+        ```
+
+While I'd be very curious to see what the substring function can do, I know for a fact that we can solve the problem with a simple for loop that manually copies the contents of the input into a new comparison array. We just need to set the values of that array to the opposite index of the original array. Luckily, we can reference the length of the array and the loop variable to accomplish this with ease:
+
+```
+        for (int i = 0; i < s.length; i++)
+        {
+            z[i] = s[s.length-1-i];
+        }
+        ```
+
+And last but not least, after the loop has run its course, we can return the comparision operation:
+```
+        return Arrays.equals(s, z);
+        ```
+
+        The final solution all together:
+
+        ```
+        class Solution {
+    public boolean isPalindrome(int x) {
+        if (x<0) return false;
+        
+        char[] s = Integer.toString(x).toCharArray();
+        char[] z = new char[s.length];
+        
+        for (int i = 0; i < s.length; i++)
+        {
+            z[i] = s[s.length-1-i];
+        }
+
+        return Arrays.equals(s, z);
+    }
+}
+```
+
+### My assumptions and mistakes
+
+- Somehow I became convinced that Java Strings were secretly always character arrays. This is apparently wrong. I will correct my thinking.
+
+- The nuances of some of the built in functions escape me. I had to be reminded of the proper syntax. (it's not `return x.equals(y)`)
+
+- You refer to the length of a String with the built-in **method** `[String].length()`. You refer to the length of a character array with the **property** `[chararray].length`. No parentheses. 
+
+#### Final Thoughts
+I really want to see if I can solve this with strings and the substring function...
